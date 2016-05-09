@@ -1,3 +1,8 @@
+<% if flash[:notice].nil? %>
+<% else %>
+  <div><%= flash[:notice] %></div>
+<% end %>
+
 <h1><%= @user.name %></h1>
 Mood: <%= @user.mood %><br> 
 Tickets: <%= @user.tickets %><br>
@@ -5,5 +10,8 @@ Height: <%= @user.height %><br>
 <% if @user.admin %>
   <p>ADMIN</p>
 <% end %>
+<br>
+<%= link_to "See attractions", attractions_path %>
+<br>
 <br>
 <%= link_to "Log Out", logout_path %>
