@@ -1,8 +1,21 @@
 class AttractionsController < ApplicationController
-  before_action :set_attraction, only: [:show]
+  before_action :set_attraction, only: [:show, :edit]
 
   def index
     @attractions = Attraction.all
+    @is_admin = is_admin
+  end
+
+  def new
+    @attraction = Attraction.new
+  end
+
+  def edit
+  end
+
+  def create
+    @attraction = Attraction.find_or_create_by(attraction_params)
+    redirect_to attraction_path(@attraction)
   end
 
   def ride
@@ -16,7 +29,12 @@ class AttractionsController < ApplicationController
 
   private
   def set_attraction
-    @attraction = Attraction.find(params[:id])    
+    @attraction = Attraction.find(params[:id])
+    @is_admin = is_admin    
+  end
+
+  def attraction_params
+    params.require(:attraction).permit(:name, :tickets, :min_height, :nausea_rating, :happiness_rating)
   end
 
 end

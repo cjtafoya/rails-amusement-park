@@ -1,6 +1,27 @@
 <h1>Welcome to Wally World</h1>
-<ul>
-<% @attractions.each do |a| %>
-  <li><%= link_to "Go on #{a.name}", attraction_path(a) %></li>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attraction</th>
+      <th><%= "Edit" if @is_admin %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @attractions.each do |a| %>
+    <% if @is_admin %>
+      <tr>
+        <td><%= link_to "Show #{a.name}", attraction_path(a) %></td>
+        <td><%= link_to "Edit", edit_attraction_path(a) %></td>
+      </tr>
+    <% else %>
+      <li><%= link_to "Go on #{a.name}", attraction_path(a) %></li>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<% if @is_admin %>
+  <%= link_to "New Attraction", new_attraction_path %>
 <% end %>
-</ul>

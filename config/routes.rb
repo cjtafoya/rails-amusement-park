@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users
   get 'logout', to: 'users#logout'
 
-  resources :attractions, only: ['index', 'show']
+  resources :attractions
   post 'takeride/:id', to: 'attractions#ride', as: 'takeride'
 
   resources :sessions, only: ['create']
