@@ -5,6 +5,11 @@ class UsersController < ApplicationController
     @user = User.new  
   end
 
+  def logout
+    reset_session
+    redirect_to root_path
+  end
+
   def show
   end
 
