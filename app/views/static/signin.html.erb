@@ -1,0 +1,6 @@
+<h3>Select your username:</h3>
+
+<%= form_tag sessions_path do %>
+<%= collection_select(:user, :id, User.all, :id, :name, prompt: true) %>
+<%= submit_tag "Sign In" %>
+<% end %>
