@@ -1,4 +1,7 @@
 <h3><%= @attraction.name %></h3>
+<p>Required tickets: <%= @attraction.tickets %></p>
+<p>Sickness level: <%= @attraction.nausea_rating %></p>
+<p>Happiness points: <%= @attraction.happiness_rating %></p>
 <% if @is_admin %>
   <%= link_to "Edit Attraction", edit_attraction_path(@attraction.id) %>
   <% else %>
